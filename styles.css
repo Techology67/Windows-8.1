@@ -1,0 +1,571 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background: #1f1f1f;
+}
+
+/* ===== START SCREEN ===== */
+.start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0078d4 0%, #00bcf2 50%, #1f1f1f 100%);
+    display: none;
+    overflow-y: auto;
+    overflow-x: auto;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+.start-screen.active {
+    display: block;
+}
+
+.start-screen.hidden {
+    display: none;
+}
+
+.tiles-container {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 150px);
+    gap: 10px;
+    width: fit-content;
+    height: fit-content;
+}
+
+/* ===== TILES ===== */
+.tile {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.tile:hover {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tile:active {
+    transform: scale(0.95);
+}
+
+/* Tile Sizes */
+.tile-medium {
+    width: 150px;
+    height: 150px;
+}
+
+.tile-large {
+    width: 310px;
+    height: 150px;
+}
+
+.tile-wide {
+    width: 310px;
+    height: 150px;
+}
+
+/* Tile Colors */
+.tile:nth-child(1) { background: linear-gradient(135deg, #0078d4, #005ea5); }
+.tile:nth-child(2) { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+.tile:nth-child(3) { background: linear-gradient(135deg, #27ae60, #229954); }
+.tile:nth-child(4) { background: linear-gradient(135deg, #f39c12, #d68910); }
+.tile:nth-child(5) { background: linear-gradient(135deg, #8e44ad, #6c3483); }
+.tile:nth-child(6) { background: linear-gradient(135deg, #3498db, #2980b9); }
+.tile:nth-child(7) { background: linear-gradient(135deg, #e67e22, #d35400); }
+.tile:nth-child(8) { background: linear-gradient(135deg, #1abc9c, #16a085); }
+.tile:nth-child(9) { background: linear-gradient(135deg, #34495e, #2c3e50); }
+.tile:nth-child(10) { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+.tile:nth-child(11) { background: linear-gradient(135deg, #16a085, #1abc9c); }
+.tile:nth-child(12) { background: linear-gradient(135deg, #2980b9, #3498db); }
+
+.tile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.tile-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.tile-label {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.tile-date {
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.tile-month {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+/* ===== DESKTOP ===== */
+.desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+    background: #1f1f1f;
+}
+
+.desktop.hidden {
+    display: none;
+}
+
+.desktop-background {
+    flex: 1;
+    background: linear-gradient(135deg, #0078d4 0%, #00bcf2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.desktop-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== TASKBAR ===== */
+.taskbar {
+    background: rgba(0, 0, 0, 0.8);
+    height: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.taskbar-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.start-button {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0078d4, #005ea5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-right: 5px;
+}
+
+.start-button:hover {
+    background: linear-gradient(135deg, #1084d8, #0066bb);
+}
+
+.start-button:active {
+    background: linear-gradient(135deg, #005ea5, #0052a3);
+}
+
+.taskbar-apps {
+    display: flex;
+    gap: 5px;
+    flex: 1;
+    margin-left: 5px;
+}
+
+.taskbar-item {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.taskbar-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.taskbar-item.active {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.system-tray {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.tray-items {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.tray-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.tray-item:hover {
+    opacity: 0.8;
+}
+
+/* ===== CHARMS BAR ===== */
+.charms-bar {
+    position: fixed;
+    right: 0;
+    bottom: 60px;
+    width: 100px;
+    background: rgba(0, 0, 0, 0.7);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 10px;
+    z-index: 8;
+}
+
+.charm-item {
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+
+.charm-item:hover {
+    background: rgba(0, 120, 212, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.charm-icon {
+    font-size: 28px;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.charm-label {
+    font-size: 10px;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+/* ===== USER PROFILE ===== */
+.user-profile {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    cursor: pointer;
+    z-index: 9;
+    transition: all 0.2s ease;
+}
+
+.user-profile:hover {
+    opacity: 0.8;
+}
+
+.profile-photo {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.profile-name {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tile {
+    animation: slideIn 0.3s ease forwards;
+}
+
+.tile:nth-child(1) { animation-delay: 0.05s; }
+.tile:nth-child(2) { animation-delay: 0.1s; }
+.tile:nth-child(3) { animation-delay: 0.15s; }
+.tile:nth-child(4) { animation-delay: 0.2s; }
+.tile:nth-child(5) { animation-delay: 0.25s; }
+.tile:nth-child(6) { animation-delay: 0.3s; }
+.tile:nth-child(7) { animation-delay: 0.35s; }
+.tile:nth-child(8) { animation-delay: 0.4s; }
+.tile:nth-child(9) { animation-delay: 0.45s; }
+.tile:nth-child(10) { animation-delay: 0.5s; }
+.tile:nth-child(11) { animation-delay: 0.55s; }
+.tile:nth-child(12) { animation-delay: 0.6s; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .tiles-container {
+        grid-template-columns: repeat(auto-fill, 120px);
+        gap: 8px;
+        padding: 20px;
+    }
+
+    .tile-medium {
+        width: 120px;
+        height: 120px;
+    }
+
+    .tile-large {
+        width: 248px;
+        height: 120px;
+    }
+
+    .tile-wide {
+        width: 248px;
+        height: 120px;
+    }
+
+    .tile-icon {
+        font-size: 36px;
+    }
+
+    .charm-item {
+        width: 60px;
+        height: 60px;
+    }
+
+    .charm-icon {
+        font-size: 20px;
+    }
+
+    .charm-label {
+        font-size: 8px;
+    }
+}
+
+/* ===== THEME VARIABLES ===== */
+:root {
+    --bg: #1f1f1f;
+    --panel: rgba(0,0,0,0.8);
+    --text: #ffffff;
+    --accent: #0078d4;
+}
+
+body[data-theme="light"] {
+    --bg: #f3f3f3;
+    --panel: rgba(255,255,255,0.9);
+    --text: #111111;
+    --accent: #0078d4;
+    background: #f3f3f3;
+}
+
+/* Windows 8.1 theme */
+body[data-theme="windows8"] {
+    --bg: #0078d4;
+    --panel: rgba(0,0,0,0.55);
+    --text: #ffffff;
+    --accent: #00a2ff;
+    background: linear-gradient(135deg, #0078d4 0%, #00bcf2 60%);
+}
+
+/* Tweak tiles for the Windows 8.1 Metro look */
+body[data-theme="windows8"] .tiles-container {
+    background: transparent;
+    padding: 36px;
+}
+
+body[data-theme="windows8"] .tile {
+    border-radius: 2px;
+    box-shadow: none;
+    color: var(--text);
+}
+
+body[data-theme="windows8"] .tile-label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+body[data-theme="windows8"] .taskbar {
+    background: rgba(0,0,0,0.5);
+}
+
+/* Theme toggle */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 6px 8px;
+    margin-right: 8px;
+}
+
+/* Start Screen theme toggle */
+.start-theme-toggle {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text);
+    padding: 8px 10px;
+    font-size: 16px;
+    border-radius: 2px;
+    cursor: pointer;
+    z-index: 12;
+}
+
+.start-theme-toggle:hover {
+    background: rgba(0,0,0,0.45);
+}
+
+/* App windows */
+.app-windows {
+    position: fixed;
+    top: 80px;
+    left: 40px;
+    right: 40px;
+    bottom: 80px;
+    pointer-events: none;
+    z-index: 25;
+}
+
+.app-window {
+    pointer-events: auto;
+    position: absolute;
+    width: 480px;
+    height: 320px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.35));
+    border: 1px solid rgba(0,0,0,0.4);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-window .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.6);
+    color: var(--text);
+    font-weight: 600;
+}
+
+.app-window .app-body {
+    padding: 12px;
+    color: var(--text);
+    flex: 1;
+    overflow: auto;
+    background: transparent;
+}
+
+.app-window .app-controls button {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Draggable visual */
+.tile[draggable="true"] {
+    cursor: grab;
+}
+.tile[draggable="true"]:active {
+    cursor: grabbing;
+}
+

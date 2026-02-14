@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 8.1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="startScreen" class="start-screen active">
+        <button class="start-theme-toggle" id="startThemeToggle" title="Toggle theme">🌙</button>
+        <!-- Tiles Container -->
+        <div class="tiles-container">
+            <!-- Row 1 -->
+            <div class="tile tile-large" data-app="mail">
+                <div class="tile-content">
+                    <div class="tile-icon">✉</div>
+                    <div class="tile-label">Mail</div>
+                </div>
+            </div>
+            
+            <div class="tile tile-wide" data-app="calendar">
+                <div class="tile-content">
+                    <div class="tile-date" id="tileDate">14</div>
+                    <div class="tile-month">Feb</div>
+                    <div class="tile-label">Calendar</div>
+                </div>
+            </div>
+
+            <div class="tile tile-large" data-app="photos">
+                <div class="tile-content">
+                    <div class="tile-icon">🖼</div>
+                    <div class="tile-label">Photos</div>
+                </div>
+            </div>
+
+            <div class="tile tile-medium" data-app="weather">
+                <div class="tile-content">
+                    <div class="tile-icon">☁</div>
+                    <div class="tile-label">Weather</div>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="tile tile-medium" data-app="store">
+                <div class="tile-content">
+                    <div class="tile-icon">🛒</div>
+                    <div class="tile-label">Store</div>
+                </div>
+            </div>
+
+            <div class="tile tile-medium" data-app="music">
+                <div class="tile-content">
+                    <div class="tile-icon">🎵</div>
+                    <div class="tile-label">Music</div>
+                </div>
+            </div>
+
+            <div class="tile tile-medium" data-app="video">
+                <div class="tile-content">
+                    <div class="tile-icon">🎬</div>
+                    <div class="tile-label">Video</div>
+                </div>
+            </div>
+
+            <div class="tile tile-large" data-app="explorer">
+                <div class="tile-content">
+                    <div class="tile-icon">📁</div>
+                    <div class="tile-label">File Explorer</div>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="tile tile-medium" data-app="internet">
+                <div class="tile-content">
+                    <div class="tile-icon">🌐</div>
+                    <div class="tile-label">Internet Explorer</div>
+                </div>
+            </div>
+
+            <div class="tile tile-medium" data-app="games">
+                <div class="tile-content">
+                    <div class="tile-icon">🎮</div>
+                    <div class="tile-label">Games</div>
+                </div>
+            </div>
+
+            <div class="tile tile-medium" data-app="settings">
+                <div class="tile-content">
+                    <div class="tile-icon">⚙</div>
+                    <div class="tile-label">Settings</div>
+                </div>
+            </div>
+
+            <div class="tile tile-medium" data-app="control">
+                <div class="tile-content">
+                    <div class="tile-icon">🖥</div>
+                    <div class="tile-label">Control Panel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop -->
+    <div id="desktop" class="desktop hidden">
+        <div class="desktop-background">
+            <div class="desktop-content">
+                <div class="taskbar">
+                    <div class="taskbar-content">
+                        <button class="start-button" id="startBtn">
+                            <span class="windows-icon">⊞</span>
+                        </button>
+                        <div class="taskbar-apps">
+                            <div class="taskbar-item active" title="Windows Explorer">
+                                <span>📁</span>
+                            </div>
+                            <div class="taskbar-item" title="Internet Explorer">
+                                <span>🌐</span>
+                            </div>
+                        </div>
+                        <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+                        <div class="system-tray">
+                            <div class="tray-items">
+                                <div class="tray-item">🔊</div>
+                                <div class="tray-item">🔋</div>
+                                <div class="tray-item" id="clockDisplay">12:00 AM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charms Bar -->
+    <div class="charms-bar" id="charmsBar">
+        <div class="charm-item" id="searchCharm">
+            <div class="charm-icon">🔍</div>
+            <div class="charm-label">Search</div>
+        </div>
+        <div class="charm-item">
+            <div class="charm-icon">🔗</div>
+            <div class="charm-label">Share</div>
+        </div>
+        <div class="charm-item">
+            <div class="charm-icon">⚙</div>
+            <div class="charm-label">Settings</div>
+        </div>
+        <div class="charm-item">
+            <div class="charm-icon">🔌</div>
+            <div class="charm-label">Devices</div>
+        </div>
+    </div>
+
+    <!-- User Profile -->
+    <div class="user-profile" id="userProfile">
+        <div class="profile-photo">👤</div>
+        <div class="profile-name">User</div>
+    </div>
+
+    <!-- App Windows Container -->
+    <div id="appWindows" class="app-windows"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
